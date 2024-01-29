@@ -40,7 +40,7 @@ def loop():
     bp = [350, 250]
     center = (350, 250)
     br = 15
-    bs = [3, 5]
+    bs = [6, 10]
     score1 = 0
     score2 = 0
     gameclose = False
@@ -64,14 +64,14 @@ def loop():
             p2p = [p2p[0], p2p[1] - ps]
         if key[pygame.K_DOWN] and p2p[1] < 500 - ph:
             p2p = [p2p[0], p2p[1] + ps]
-        bp[1] -= bs[1]
-        bp[0] += bs[0]
-        if bp[1]==500-br or bp[1]== 0+br:
-            bs[1]=-bs[1]
+        bp[1] += bs[1]
+        bp[0] -= bs[0]
+        if bp[1]>=500-br or bp[1]<= 0+br:
+            bs[1]*=-1
             hit_s.play()
 
         if (bp[0]<=p1p[0]+pw and bp[1]>=p1p[1] and bp[1]<=p1p[1]+ph) or (bp[0]>=p2p[0]-pw and bp[1]>=p2p[1] and bp[1]<=p2p[1]+ph):
-            bs[0]=-bs[0]
+            bs[0]*=-1
             hit_s.play()
         if bp[0]<0:
             score2 += 1
